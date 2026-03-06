@@ -5,6 +5,6 @@ metadata:
 spec:
   selector:
     app: nginx-web
-  port:
+  ports:
     - port: 80
       targetPort: 80
