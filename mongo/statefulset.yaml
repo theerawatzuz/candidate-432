@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: mongo
-          image: mongo:6.0
+          image: mongo:3.6
           args:
             - "--replSet"
             - "rs0"
