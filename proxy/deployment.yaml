@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-proxy
+  template:
+    metadata:
+      labels:
+        app: hello-proxy
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:stable
+          volumeMounts:
+            - name: config
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+          volumes:
+            - name: config
+              configMap:
+                name: hello-nginx-config
