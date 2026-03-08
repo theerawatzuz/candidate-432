@@ -32,13 +32,3 @@ spec:
                 name: hello-proxy
                 port:
                   number: 80
-    - host: prometheus.thebrainsurf.site
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: prometheus
-                port:
-                  number: 9090
