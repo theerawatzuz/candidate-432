@@ -16,8 +16,6 @@ spec:
       containers:
         - name: mongodb-exporter
           image: percona/mongodb_exporter:0.47.0
-          command:
-            - /bin/mongodb_exporter
           ports:
             - containerPort: 9216
           args:
