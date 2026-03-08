@@ -5,7 +5,8 @@ metadata:
 spec:
   ingressClassName: public
   rules:
-    - http:
+    - host: thebrainsurf.site
+      http:
         paths:
           - path: /
             pathType: Prefix
