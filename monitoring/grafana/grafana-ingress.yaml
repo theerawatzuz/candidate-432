@@ -12,7 +12,7 @@ spec:
   tls:
     - hosts:
         - grafana.thebrainsurf.site
-      secretName: grafana-tls
+      secretName: wildcard-tls
   rules:
     - host: grafana.thebrainsurf.site
       http:
