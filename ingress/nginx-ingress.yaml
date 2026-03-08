@@ -2,8 +2,15 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nginx-web
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   ingressClassName: public
+  tls:
+    - hosts:
+        - thebrainsurf.site
+      secretName: thebrainsurf-tls
   rules:
     - host: thebrainsurf.site
       http:
