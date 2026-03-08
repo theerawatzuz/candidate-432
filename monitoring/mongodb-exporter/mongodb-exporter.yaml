@@ -18,6 +18,8 @@ spec:
           image: percona/mongodb_exporter:0.20
           ports:
             - containerPort: 9216
+          args:
+            - --mongodb.direct-connect=false
           env:
             - name: MONGODB_URI
               value: "mongodb://mongo-0.mongo:27017,mongo-1.mongo:27017,mongo-2.mongo:27017/?replicaSet=rs0"
