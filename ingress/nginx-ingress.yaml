@@ -32,16 +32,6 @@ spec:
                 name: hello-proxy
                 port:
                   number: 80
-    - host: grafana.thebrainsurf.site
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: grafana
-                port:
-                  number: 3000
     - host: prometheus.thebrainsurf.site
       http:
         paths:
