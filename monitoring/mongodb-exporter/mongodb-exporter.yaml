@@ -18,6 +18,8 @@ spec:
           image: percona/mongodb_exporter:0.40.0
           ports:
             - containerPort: 9216
+          args:
+            - --collect-all
           env:
             - name: MONGODB_URI
               value: "mongodb://mongo-0.mongo.default.svc.cluster.local:27017,mongo-1.mongo.default.svc.cluster.local:27017,mongo-2.mongo.default.svc.cluster.local:27017/?replicaSet=rs0"
