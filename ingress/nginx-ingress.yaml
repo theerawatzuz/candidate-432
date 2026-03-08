@@ -11,6 +11,8 @@ spec:
   tls:
     - hosts:
         - thebrainsurf.site
+        - grafana.thebrainsurf.site
+        - prometheus.thebrainsurf.site
       secretName: thebrainsurf-tls
   rules:
     - host: thebrainsurf.site
