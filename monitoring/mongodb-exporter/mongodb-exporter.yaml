@@ -19,7 +19,6 @@ spec:
           ports:
             - containerPort: 9216
           args:
-            - --mongodb.uri=$(MONGODB_URI)
             - --collector.diagnosticdata
             - --collector.replicasetstatus
             - --collector.dbstats
