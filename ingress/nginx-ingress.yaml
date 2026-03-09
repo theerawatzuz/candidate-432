@@ -6,13 +6,8 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      rewrite ^/hello$ /hello/ permanent;
-      sub_filter 'href="/' 'href="/hello/';
-      sub_filter 'src="/' 'src="/hello/';
-      sub_filter_once off;
-      sub_filter_types text/html text/css application/javascript;
-      proxy_set_header Accept-Encoding "";
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   ingressClassName: public
   tls:
@@ -30,18 +25,8 @@ spec:
                 name: nginx-service
                 port:
                   number: 80
-          - path: /hello
-            pathType: Prefix
-            backend:
-              service:
-                name: hello-proxy
-                port:
-                  number: 80
-    - host: thebrainsurf.site
-      http:
-        paths:
-          - path: /hello/
-            pathType: Prefix
+          - path: /hello(/|$)(.*)
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: hello-proxy
