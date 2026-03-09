@@ -1,4 +1,4 @@
-# Kubernetes Deployment Guide - KPC Candidate Test
+# Kubernetes Deployment Guide
 
 ## Overview
 
