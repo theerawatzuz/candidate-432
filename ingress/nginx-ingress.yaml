@@ -18,17 +18,17 @@ spec:
     - host: thebrainsurf.site
       http:
         paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: nginx-service
-                port:
-                  number: 80
           - path: /hello(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
               service:
                 name: hello-proxy
+                port:
+                  number: 80
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx-service
                 port:
                   number: 80
