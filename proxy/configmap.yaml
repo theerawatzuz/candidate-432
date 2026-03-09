@@ -22,7 +22,9 @@ data:
           # Decompress before sub_filter
           gunzip on;
           
-          # Add /hello prefix to links in HTML only
+          # Fix relative paths to absolute with /hello prefix
+          sub_filter 'href="../' 'href="/hello/';
+          sub_filter 'src="../' 'src="/hello/';
           sub_filter 'href="/' 'href="/hello/';
           sub_filter 'src="/' 'src="/hello/';
           sub_filter_once off;
