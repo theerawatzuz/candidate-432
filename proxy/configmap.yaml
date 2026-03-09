@@ -11,13 +11,16 @@ data:
         listen 80;
         
         location / {
+          # Strip /hello prefix
+          rewrite ^/hello/(.*)$ /$1 break;
+          rewrite ^/hello$ / break;
+          
           proxy_pass http://kpc-candidate-test.s3-website-ap-southeast-1.amazonaws.com;
           proxy_set_header Host kpc-candidate-test.s3-website-ap-southeast-1.amazonaws.com;
           
-          # Rewrite ONLY HTML content to add /hello prefix
+          # Add /hello prefix to links in HTML only
           sub_filter 'href="/' 'href="/hello/';
           sub_filter 'src="/' 'src="/hello/';
-          sub_filter 'url(/' 'url(/hello/';
           sub_filter_once off;
           sub_filter_types text/html;
           

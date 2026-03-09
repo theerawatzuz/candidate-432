@@ -6,8 +6,6 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
-    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   ingressClassName: public
   tls:
@@ -18,8 +16,8 @@ spec:
     - host: thebrainsurf.site
       http:
         paths:
-          - path: /hello(/|$)(.*)
-            pathType: ImplementationSpecific
+          - path: /hello
+            pathType: Prefix
             backend:
               service:
                 name: hello-proxy
