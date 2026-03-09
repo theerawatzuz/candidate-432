@@ -11,20 +11,7 @@ data:
         listen 80;
         
         location / {
-          # Remove /hello prefix before proxying to S3
-          rewrite ^/hello(.*)$ $1 break;
-          
           proxy_pass http://kpc-candidate-test.s3-website-ap-southeast-1.amazonaws.com;
-          proxy_set_header Host kpc-candidate-test.s3-website-ap-southeast-1.amazonaws.com;
-          
-          # Rewrite HTML content to add /hello prefix to asset paths
-          sub_filter 'href="/' 'href="/hello/';
-          sub_filter 'src="/' 'src="/hello/';
-          sub_filter 'url(/' 'url(/hello/';
-          sub_filter_once off;
-          sub_filter_types text/html text/css application/javascript;
-          
-          proxy_set_header Accept-Encoding "";
         }
       }
     }
